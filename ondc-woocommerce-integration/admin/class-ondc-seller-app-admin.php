@@ -95,9 +95,9 @@ class Ondc_Seller_App_Admin {
 			$category_id = str_replace( ':', '', $category['id'] );
 			?>
 				<div class="ondc-sub-categories" id="ondc_product_sub_categories_<?php echo esc_attr( $category_id ); ?>_wrapper">
-					<label for="ondc_product_sub_categories_<?php echo esc_attr( $category_id ); ?>"><?php echo sprintf( __( 'ONDC Sub Category for %s:', 'ondc-woocommerce-integration' ), $category['name'] ); ?></label>
+					<label for="ondc_product_sub_categories_<?php echo esc_attr( $category_id ); ?>"><?php echo sprintf( esc_html__( 'ONDC Sub Category for %s:', 'ondc-woocommerce-integration' ), esc_attr( $category['name'] ) ); ?></label>
 					<select name="ondc_product_sub_categories[<?php echo esc_attr( $category['id'] ); ?>]" id="ondc_product_sub_categories_<?php echo esc_attr( $category_id ); ?>">
-						<option value=""><?php echo sprintf( __( 'Select Sub Category for %s', 'ondc-woocommerce-integration' ), $category['name'] ); ?></option>
+						<option value=""><?php echo sprintf( esc_html__( 'Select Sub Category for %s', 'ondc-woocommerce-integration' ), esc_attr( $category['name'] ) ); ?></option>
 					<?php foreach ( $category['sub_cats'] as $sub_category ) : ?>
 							<option value="<?php echo esc_attr( $sub_category ); ?>" <?php selected( $current_ondc_sub_categories, $sub_category ); ?>><?php echo esc_html( $sub_category ); ?></option>
 						<?php endforeach; ?>

@@ -95,7 +95,7 @@ class ONDC_Request_Handler
             "message" => $message,
         );
 
-        $request_body = json_encode($request, JSON_UNESCAPED_SLASHES);
+        $request_body = wp_json_encode($request, JSON_UNESCAPED_SLASHES);
 
         $header = create_authorisation_header($request_body);
         if(isset($options->bap_uri)){
@@ -128,7 +128,7 @@ class ONDC_Request_Handler
             $table,
             array(
                 'action' => $action,
-                'payload' => json_encode($request_body),
+                'payload' => wp_json_encode($request_body),
                 'timestamp' => ondcSellerApp\wdm_ondc_get_timetamp(),
             ),
             array(

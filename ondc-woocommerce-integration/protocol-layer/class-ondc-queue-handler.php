@@ -46,7 +46,7 @@ class ONDC_Queue_Handler
                 $table,
                 array(
                     'action' => $action,
-                    'payload' => json_encode($payload),
+                    'payload' => wp_json_encode($payload),
                     'priority' => $priority,
                     'timestamp' => ondcSellerApp\wdm_ondc_get_timetamp(),
                 ),
@@ -65,7 +65,7 @@ class ONDC_Queue_Handler
             $table,
             array(
                 'action' => $action,
-                'payload' => json_encode($payload),
+                'payload' => wp_json_encode($payload),
                 'timestamp' => ondcSellerApp\wdm_ondc_get_timetamp(),
             ),
             array(

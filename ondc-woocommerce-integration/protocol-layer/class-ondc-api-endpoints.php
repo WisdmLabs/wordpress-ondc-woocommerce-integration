@@ -111,14 +111,14 @@ class ONDC_API_Endpoints
             "context" => $context,
             "message" => $message
         );
-        $ondc_logger->log(json_encode($ack_response, JSON_UNESCAPED_SLASHES));
+        $ondc_logger->log(wp_json_encode($ack_response, JSON_UNESCAPED_SLASHES));
         return $ack_response;
     }
 
     public function subscribe($type){
         $ondc_subscribe = new ONDC_Subscribe();
         $response = $ondc_subscribe->subscribe($type);
-        echo json_encode($response);
+        echo wp_json_encode($response);
     }
 
     public function on_subscribe(){

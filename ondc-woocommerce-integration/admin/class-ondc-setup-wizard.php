@@ -300,10 +300,10 @@ class ONDC_Setup_Wizard {
 								$lng = 77.229463;
 							}
 							?>
-							map = new mappls.Map('map', {center:{lat:<?php echo $lat; ?>, lng:<?php echo $lng; ?>}, zoom:15}); // @codingStandardsIgnoreLine.
+							map = new mappls.Map('map', {center:{lat:<?php echo esc_attr( $lat ); ?>, lng:<?php echo esc_attr( $lng ); ?>}, zoom:15}); // @codingStandardsIgnoreLine.
 							var marker = new mappls.Marker({
 								map: map,
-								position: {"lat": <?php echo $lat; ?>, "lng": <?php echo $lng; ?>}, // @codingStandardsIgnoreLine.
+								position: {"lat": <?php echo esc_attr( $lat ); ?>, "lng": <?php echo esc_attr( $lng ); ?>}, // @codingStandardsIgnoreLine.
 							});
 
 							function getLocation() {
@@ -531,7 +531,7 @@ class ONDC_Setup_Wizard {
 		$ondc_seller_app = ! empty( $ondc_seller_app ) ? $ondc_seller_app : array();
 		?>
 		<form method="post" action="<?php echo esc_url( $wizard_handler->get_next_step_link() ); ?>">
-		<p><?php _e( 'Select the product categories you want to sync to the ONDC platform:', 'ondc-woocommerce-integration' ); ?></p>
+		<p><?php esc_html_e( 'Select the product categories you want to sync to the ONDC platform:', 'ondc-woocommerce-integration' ); ?></p>
 				<?php
 				// get all woo product categories
 				$args = array(
@@ -540,8 +540,8 @@ class ONDC_Setup_Wizard {
 				);
 				$product_categories = get_terms( $args );
 
-				// get all ondc categories
-				$ondc_admin = new ONDC_Seller_App_Admin($this->plugin_name, $this->version);
+				// get all ondc categories.
+				$ondc_admin      = new ONDC_Seller_App_Admin( $this->plugin_name, $this->version );
 				$ondc_categories = $ondc_admin->get_ondc_categories();
 				?>
 				<table class="form-table">
@@ -549,12 +549,12 @@ class ONDC_Setup_Wizard {
 					<tbody>
 						<tr>
 							<th scope="row">
-								<label for="product_categories"><?php _e( 'Product Categories', 'ondc-woocommerce-integration' ); ?></label>
+								<label for="product_categories"><?php esc_html_e( 'Product Categories', 'ondc-woocommerce-integration' ); ?></label>
 							</th>
 							<td>
 								<select name="product_categories[]" id="product_categories" class="regular-text" multiple>
 									<?php
-									foreach( $product_categories as $product_category ) {
+									foreach ( $product_categories as $product_category ) {
 										?>
 										<option value="<?php echo esc_attr( $product_category->term_id ); ?>"><?php echo esc_html( $product_category->name ); ?></option>
 										<?php
@@ -565,12 +565,12 @@ class ONDC_Setup_Wizard {
 						</tr>
 						<tr>
 							<th scope="row">
-								<label for="ondc_categories"><?php _e( 'ONDC Categories', 'ondc-woocommerce-integration' ); ?></label>
+								<label for="ondc_categories"><?php esc_html_e( 'ONDC Categories', 'ondc-woocommerce-integration' ); ?></label>
 							</th>
 							<td>
 								<select name="ondc_categories[]" id="ondc_categories" class="regular-text">
 									<?php
-									foreach( $ondc_categories as $ondc_category ) {
+									foreach ( $ondc_categories as $ondc_category ) {
 										?>
 										<option value="<?php echo esc_attr( $ondc_category['id'] ); ?>"><?php echo esc_html( $ondc_category['name'] ); ?></option>
 										<?php

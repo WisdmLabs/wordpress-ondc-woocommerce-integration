@@ -155,7 +155,7 @@ class ONDC_Subscribe{
             'headers' => [
                 'Content-Type' => 'application/json',
             ],
-            'body' => json_encode($this->subscriber_body),
+            'body' => wp_json_encode($this->subscriber_body),
         );
 
         update_option('ondc_seller_app', $ondc_data);
@@ -225,7 +225,7 @@ class ONDC_Subscribe{
             'headers' => [
                 'Content-Type' => 'application/json',
             ],
-            'body' => json_encode($args),
+            'body' => wp_json_encode($args),
         );
 
         $response = wp_remote_post($wdm_url, $request_data);
@@ -258,7 +258,7 @@ class ONDC_Subscribe{
                 "subscriber_id" => $sub_id,
         );
 
-        $signature = create_signature(json_encode($search_params));
+        $signature = create_signature(wp_json_encode($search_params));
 
         $ondc_seller_app = get_option( 'ondc_seller_app' );
 
@@ -274,7 +274,7 @@ class ONDC_Subscribe{
             'headers' => [
                 'Content-Type' => 'application/json',
             ],
-            'body' => json_encode($args),
+            'body' => wp_json_encode($args),
         );
 
         $response = wp_remote_post(ONDC_STAGGING_URL . '/vlookup', $request_data);
